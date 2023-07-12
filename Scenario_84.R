@@ -48,8 +48,8 @@ v_Css <- c(4, 8)
 v_U_1 <- c(10^-6, 10^-8)
 v_U_2 <- c(10^-6, 10^-8)
 
-input_all <- expand_grid(v_HILL, v_FIT, v_Gmin, v_RA, v_RB, v_Css, v_U, v_eB) %>% 
-  arrange(desc(v_FIT), v_HILL) %>% 
+input_all <- expand_grid(v_HILL_A, v_HILL_B, v_FIT, v_Gmin, v_RA, v_RB, v_Css, v_U_1, v_U_2,, v_eB) %>% 
+  arrange(desc(v_FIT), v_HILL_A, v_HILL_B) %>% 
   mutate(ID = row_number()) %>% 
   as.data.frame()
 
