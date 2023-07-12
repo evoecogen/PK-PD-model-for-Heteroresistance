@@ -206,6 +206,7 @@ CS_model <- function(t_half = 2, F_Css_MIC = 1, v_Models = c("Mono A",
   
   # 4 state model including S (= WT), RA, RB, RAB)
   # SSA for PD 
+  # The same order as mrate function following
   transitions = list(c(S = +1),
                      c(S = -1),
                      c(S = -1, RA = +1),
@@ -422,7 +423,7 @@ CS_model <- function(t_half = 2, F_Css_MIC = 1, v_Models = c("Mono A",
                                   rRAB_RB = u_3)
                                 
                                 # ssa.adaptive() was used to do stochastic implementation with Implicit-Explicit tau-leap method
-                                r = ssa.adaptivetau(x0, transitions, mrates, params, deterministic = deterministic, tf = 0.1)
+                                r = ssa.adaptivetau(x0, transitions, mrates, params, deterministic = deterministic, tf = 0.1, maxtau = 0.1)
                                 
                                 # Input calculation results to data frame 
                                 PD_mod <- tail(as.data.frame(r), n = 1)
